@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import randomRGB from '../../utils/randomRGB';
 
 const AppBarStyled = styled.header`
   top: 0;
@@ -71,6 +72,10 @@ const AppBarStyled = styled.header`
     }
   }
 
+  .userMenu_container {
+    display: flex;
+    align-items: center;
+  }
   .user-profile_btn {
     width: 40px;
     height: 40px;
@@ -90,8 +95,6 @@ const AppBarStyled = styled.header`
     &:focus,
     &:hover {
       transform: scale(1.1);
-      /* border: 1px solid #883dc7f2; */
-      /* box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23); */
       outline: none;
     }
   }
@@ -99,38 +102,17 @@ const AppBarStyled = styled.header`
   .user-profile_btn:hover .user-profile_icon {
     fill: #7915c5;
   }
-  .logout_btn {
+
+  .avatar_span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
-    font-size: 18px;
-    color: inherit;
-
-    border: 1px solid transparent;
-    background-color: transparent;
-
-    border-radius: 30px;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    & svg {
-      fill: #a9d5d5;
-    }
-
-    &:focus,
-    &:hover {
-      transform: scale(1.1);
-      /* border: 1px solid #883dc7f2; */
-      /* box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23); */
-      outline: none;
-    }
-  }
-
-  .logout_icon {
-    fill: #a9d5d5;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .logout_btn:hover .logout_icon {
-    fill: #7915c5;
+    font-size: 24px;
+    font-weight: 500;
+    background-color: ${randomRGB};
+    border-radius: 50%;
   }
 
   .auth_btn-link {

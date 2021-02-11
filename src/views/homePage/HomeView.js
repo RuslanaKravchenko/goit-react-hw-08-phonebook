@@ -4,7 +4,6 @@ import HomeViewStyled from './HomeViewStyled';
 
 const initialState = {
   number: '',
-  // email: '',
 };
 
 const buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0', '#'];
@@ -84,23 +83,6 @@ const HomeView = () => {
           </svg>
         </a>
       </div>
-
-      {/* <label className="home_fild">
-        <span className="home_text">Email: </span>
-
-        <input
-          className="home_input"
-          placeholder="Enter email..."
-          type="email"
-          name="email"
-          value={state.email}
-          onChange={onHandleChange}
-        />
-      </label>
-
-      <a className="email_btn " href={`mailto:${state.email}`}>
-        Message
-      </a> */}
     </HomeViewStyled>
   );
 };

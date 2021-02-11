@@ -12,7 +12,13 @@ const getNewTokenRequest = createAction('auth/getNewTokenRequest');
 const getNewTokenSuccess = createAction('auth/getNewTokenSuccess');
 const getNewTokenError = createAction('auth/getNewTokenError');
 
+const updateUserRequest = createAction('auth/updateUserRequest');
+const updateUserSuccess = createAction('auth/updateUserSuccess');
+const updateUserError = createAction('auth/updateUserError');
+
 const signOut = createAction('auth/signOut');
+
+const showProfile = createAction('auth/showProfile');
 
 const authActions = {
   signUpRequest,
@@ -25,6 +31,10 @@ const authActions = {
   getNewTokenRequest,
   getNewTokenSuccess,
   getNewTokenError,
+  showProfile,
+  updateUserRequest,
+  updateUserSuccess,
+  updateUserError,
 };
 
 export default authActions;

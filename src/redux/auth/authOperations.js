@@ -33,6 +33,7 @@ const signInOperation = user => async dispatch => {
       returnSecureToken: true,
     });
     token.set(response.data.idToken);
+
     dispatch(authActions.signInSuccess(response.data));
   } catch (error) {
     dispatch(authActions.signInError(error.message));
@@ -50,7 +51,6 @@ const refreshTokenOperation = () => async (dispatch, getState) => {
     dispatch(authActions.getNewTokenSuccess(response.data));
     console.log('Новый токен получен');
     dispatch(contactsOperations.getContacts());
-    console.log('Сделан запрос за контактами');
   } catch (error) {
     dispatch(authActions.getNewTokenError(error.message));
   }
@@ -58,7 +58,8 @@ const refreshTokenOperation = () => async (dispatch, getState) => {
 
 const updateUserProfileOperation = user => async (dispatch, getState) => {
   const idToken = getState().auth.token.idToken;
-  // dispatch(authActions.getNewTokenRequest());
+  const isAuth = getState().auth.token.isAuth;
+  dispatch(authActions.updateUserRequest());
   try {
     const response = await axios.post(
       process.env.REACT_APP_UPDATE_USER_PROFILE,
@@ -68,10 +69,12 @@ const updateUserProfileOperation = user => async (dispatch, getState) => {
         returnSecureToken: true,
       },
     );
-    console.log(response);
-    // dispatch(authActions.getNewTokenSuccess(response.data));
+
+    dispatch(authActions.updateUserSuccess(response.data));
   } catch (error) {
-    // dispatch(authActions.getNewTokenError(error.message));
+    if (isAuth && error.message === 'Request failed with status code 400') {
+      dispatch(authActions.signOut());
+    } else dispatch(authActions.updateUserError(error.message));
   }
 };
 

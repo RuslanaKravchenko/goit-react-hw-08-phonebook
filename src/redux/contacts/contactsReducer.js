@@ -54,9 +54,9 @@ const errorReducer = createReducer(null, {
 });
 
 const loadingReducer = createReducer(false, {
-  // [contactsActions.getContactsRequest]: () => true,
-  // [contactsActions.getContactsSuccess]: () => false,
-  // [contactsActions.getContactsError]: () => false,
+  [contactsActions.getContactsRequest]: () => true,
+  [contactsActions.getContactsSuccess]: () => false,
+  [contactsActions.getContactsError]: () => false,
 
   [contactsActions.addNewContactRequest]: () => true,
   [contactsActions.addNewContactSuccess]: () => false,

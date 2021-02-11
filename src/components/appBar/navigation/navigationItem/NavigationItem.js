@@ -20,10 +20,9 @@ const NavigationItem = ({
             className="link"
             activeClassName="activeLink"
           >
-            <svg className="" width="28px" height="28px">
+            <svg className="" width="30px" height="30px">
               <use href={icon} />
             </svg>
-            {/* {name.toUpperCase()} */}
           </NavLink>
         </li>
       )}
@@ -36,26 +35,12 @@ const NavigationItem = ({
             className="link"
             activeClassName="activeLink"
           >
-            <svg className="" width="28px" height="28px">
+            <svg className="" width="30px" height="30px">
               <use href={icon} />
             </svg>
-            {/* {name.toUpperCase()} */}
           </NavLink>
         </li>
       )}
-
-      {/* {!isAuth && !isPrivate && restricted && (
-        <li className="listItem" key={path}>
-          <NavLink
-            to={path}
-            exact={exact}
-            className="link"
-            activeClassName="activeLink"
-          >
-            {name.toUpperCase()}
-          </NavLink>
-        </li>
-      )} */}
     </>
   );
 };

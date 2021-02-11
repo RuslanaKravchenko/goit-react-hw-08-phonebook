@@ -1,44 +1,29 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import ContactForm from './contactForm/ContactForm';
 import ContactList from './contactList/ContactList';
 import Filter from './filter/Filter';
 
-import EditProfileForm from './editProfileForm/EditProfileForm';
-import Modal from './modal/Modal';
-import ContactInfo from './contactInfo/ContactInfo';
-
 import contactsOperations from '../../redux/contacts/contactsOperations';
 import contactsSelectors from '../../redux/contacts/contactsSelectors';
-import {
-  getModalContent,
-  getModalIsOpen,
-} from '../../redux/modal/modalSelectors';
 
 import { CSSTransition } from 'react-transition-group';
+import sprite from '../../assets/symbol-defs.svg';
 import Main from './PhonebookStyled';
 import Spinner from '../loader/Loader';
+import { showModal } from '../../redux/modal/modalActions';
 
-const Phonebook = ({
-  contacts,
-  onGetContacts,
-
-  isOpen,
-  content,
-  idValue,
-  isLoadingContacts,
-}) => {
+const Phonebook = ({ contacts, isLoadingContacts }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    onGetContacts();
+    dispatch(contactsOperations.getContacts());
 
     // eslint-disable-next-line
   }, []);
 
-  const getContactById = idValue => {
-    const contactById = contacts.find(contact => contact.id === idValue);
-    return contactById;
+  const openAddContsctForm = () => {
+    dispatch(showModal('openAddContsctForm'));
   };
 
   return (
@@ -52,41 +37,20 @@ const Phonebook = ({
           classNames="title"
           unmountOnExit
         >
-          <h1 className="phonebook_title">Phonebook</h1>
+          <h1 className="phonebook_title">Contacts</h1>
         </CSSTransition>
 
-        <CSSTransition
-          in={true}
-          appear={true}
-          timeout={400}
-          classNames="form"
-          unmountOnExit
-        >
-          <ContactForm />
-        </CSSTransition>
-
-        <CSSTransition
-          in={true}
-          appear={true}
-          timeout={500}
-          classNames="contactsTitle"
-          unmountOnExit
-        >
-          <>
-            <h2 className="contacts_title">Contacts</h2>
-            {contacts.length > 1 && (
-              <CSSTransition
-                in={true}
-                appear={true}
-                timeout={500}
-                classNames="filter"
-                unmountOnExit
-              >
-                <Filter />
-              </CSSTransition>
-            )}
-          </>
-        </CSSTransition>
+        {contacts.length > 1 && (
+          <CSSTransition
+            in={true}
+            appear={true}
+            timeout={400}
+            classNames="filter"
+            unmountOnExit
+          >
+            <Filter />
+          </CSSTransition>
+        )}
 
         <CSSTransition
           in={true}
@@ -113,21 +77,21 @@ const Phonebook = ({
         )}
 
         <CSSTransition
-          in={isOpen}
+          in={true}
           appear={true}
-          timeout={300}
-          classNames="modal"
+          timeout={700}
+          classNames="openContactForm_btn"
           unmountOnExit
         >
-          <Modal>
-            {content === 'openEditProfile' && (
-              <EditProfileForm contactById={getContactById(idValue)} />
-            )}
-
-            {content === 'openContactInfo' && (
-              <ContactInfo contactById={getContactById(idValue)} />
-            )}
-          </Modal>
+          <button
+            type="button"
+            className="openContactForm_btn"
+            onClick={openAddContsctForm}
+          >
+            <svg width="25px" height="25px">
+              <use href={sprite + '#person_add'} />
+            </svg>
+          </button>
         </CSSTransition>
       </Main>
     </>
@@ -137,27 +101,13 @@ const Phonebook = ({
 const mapStateToProps = state => {
   return {
     contacts: contactsSelectors.getContacts(state),
-    idValue: contactsSelectors.getContactId(state),
     isLoadingContacts: contactsSelectors.getLoading(state),
-    isOpen: getModalIsOpen(state),
-    content: getModalContent(state),
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onGetContacts: () => {
-      dispatch(contactsOperations.getContacts());
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Phonebook);
+export default connect(mapStateToProps)(Phonebook);
 
 Phonebook.propTypes = {
   contacts: PropTypes.array,
-  getContacts: PropTypes.func,
-  isOpen: PropTypes.bool,
-  content: PropTypes.string,
-  idValue: PropTypes.string,
   isLoadingContacts: PropTypes.bool,
 };

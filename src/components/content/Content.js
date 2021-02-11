@@ -12,12 +12,54 @@ import DefaultPage from '../../views/defaultPage/DefaultPage';
 import Notice from '../notice/Notice';
 
 import { CSSTransition } from 'react-transition-group';
+import UserProfile from '../userProfile/UserProfile';
+import Modal from '../phonebook/modal/Modal';
+import {
+  getModalContent,
+  getModalIsOpen,
+} from '../../redux/modal/modalSelectors';
+import contactsSelectors from '../../redux/contacts/contactsSelectors';
+import UpdateUserProfileForm from '../updateUserProfileForm/UpdateUserProfileForm';
+import EditProfileForm from '../phonebook/editProfileForm/EditProfileForm';
+import ContactInfo from '../phonebook/contactInfo/ContactInfo';
+import ContactForm from '../phonebook/contactForm/ContactForm';
 
 const Content = () => {
   const isAuth = useSelector(authSelectors.isAuthenticated);
   const showNotice = useSelector(getShowNotice);
+  const showProfile = useSelector(authSelectors.showProfile);
+  const modalIsOpen = useSelector(getModalIsOpen);
+  const modalContent = useSelector(getModalContent);
+  const contactById = useSelector(contactsSelectors.getContactById);
+
   return (
     <div className="container">
+      {showProfile && <UserProfile />}
+
+      <CSSTransition
+        in={modalIsOpen}
+        appear={true}
+        timeout={300}
+        classNames="modal"
+        unmountOnExit
+      >
+        <Modal>
+          {modalContent === 'openUpdateUserProfile' && (
+            <UpdateUserProfileForm />
+          )}
+
+          {modalContent === 'openEditProfile' && (
+            <EditProfileForm contactById={contactById} />
+          )}
+
+          {modalContent === 'openContactInfo' && (
+            <ContactInfo contactById={contactById} />
+          )}
+
+          {modalContent === 'openAddContsctForm' && <ContactForm />}
+        </Modal>
+      </CSSTransition>
+
       <CSSTransition
         in={showNotice}
         timeout={250}

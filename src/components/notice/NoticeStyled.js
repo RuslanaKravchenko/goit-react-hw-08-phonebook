@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 const NoticeWrapper = styled.div`
-  z-index: 950;
+  z-index: 2000;
   padding: 20px;
   position: fixed;
   top: 20px;

@@ -6,10 +6,10 @@ import storage from 'redux-persist/lib/storage';
 import authActions from './authActions';
 
 const initialUserState = {
-  displayName: null,
-  photoUrl: '',
-  email: null,
+  displayName: '',
+  email: '',
   localId: '',
+  showProfile: false,
 };
 
 const userReducer = createReducer(initialUserState, {
@@ -17,15 +17,25 @@ const userReducer = createReducer(initialUserState, {
     ...state,
     email: payload.email,
     localId: payload.localId,
-    name: payload.name,
   }),
   [authActions.signInSuccess]: (state, { payload }) => ({
     ...state,
     email: payload.email,
     localId: payload.localId,
+    displayName: payload.displayName,
   }),
+
   [authActions.signOut]: () => initialUserState,
-  // [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  [authActions.showProfile]: state => ({
+    ...state,
+    showProfile: !state.showProfile,
+  }),
+
+  [authActions.updateUserSuccess]: (state, { payload }) => ({
+    ...state,
+    email: payload.email,
+    displayName: payload.displayName,
+  }),
 });
 
 const initialToken = {
@@ -53,6 +63,11 @@ const tokenReducer = createReducer(initialToken, {
     idToken: payload.id_token,
     refreshToken: payload.refresh_token,
   }),
+  [authActions.updateUserSuccess]: (state, { payload }) => ({
+    ...state,
+    idToken: payload.idToken,
+    refreshToken: payload.refreshToken,
+  }),
 });
 
 const errorReducer = createReducer(null, {
@@ -60,6 +75,7 @@ const errorReducer = createReducer(null, {
   [authActions.signInError]: (_, { payload }) => payload,
   [authActions.signOut]: () => null,
   [authActions.getNewTokenError]: (_, { payload }) => payload,
+  [authActions.updateUserError]: (_, { payload }) => payload,
 });
 
 const loadingReducer = createReducer(false, {
@@ -75,7 +91,7 @@ const loadingReducer = createReducer(false, {
 const userPersistConfig = {
   key: 'user',
   storage,
-  whitelist: ['name', 'email', 'localId'],
+  whitelist: ['displayName', 'email', 'localId'],
 };
 
 const tokenPersistConfig = {

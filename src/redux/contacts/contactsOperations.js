@@ -38,12 +38,11 @@ const getContacts = () => async (dispatch, getState) => {
         id: key,
       }));
       dispatch(contactsActions.getContactsSuccess(contacts));
-    } else dispatch(contactsActions.getContactsSuccess());
+    } else return;
   } catch (error) {
     if (isAuth && error.message === 'Request failed with status code 401') {
       dispatch(refreshTokenOperation());
-    }
-    dispatch(contactsActions.getContactsError(error.message));
+    } else dispatch(contactsActions.getContactsError(error.message));
   }
 };
 

@@ -9,6 +9,7 @@ import authSelectors from '../../redux/auth/authSelectors';
 
 const AppBar = () => {
   const isAuth = useSelector(authSelectors.isAuthenticated);
+
   return (
     <AppBarStyled>
       <nav className="app_nav">

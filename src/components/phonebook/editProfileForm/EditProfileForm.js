@@ -62,7 +62,7 @@ const EditProfileForm = ({ contactById, editContact, hideModal }) => {
               </div>
             ) : (
               <span className="avatar_span">
-                {contact.name[0].toUpperCase()}{' '}
+                {contact.name[0].toUpperCase()}
               </span>
             )}
           </label>

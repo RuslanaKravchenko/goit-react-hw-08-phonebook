@@ -2,7 +2,16 @@ import styled from 'styled-components';
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  padding: 40px 15px;
 
+  @media (min-width: 768px) {
+    padding: 40px 50px;
+  }
+
+  .form_title {
+    text-align: center;
+    color: #0d5667;
+  }
   .form_fild {
     display: flex;
     flex-direction: column;
@@ -33,7 +42,7 @@ const Form = styled.form`
   }
 
   .form_btn {
-    margin: 0 auto 40px;
+    margin: 0 auto;
     width: 200px;
     height: 50px;
     font-size: 18px;

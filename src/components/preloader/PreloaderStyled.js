@@ -16,8 +16,23 @@ const PreloaderStyled = styled.div`
     top: 40%;
     left: 50%;
     text-align: center;
-    color: #0d5667;
+    font-size: 40px;
+    color: #7915c5;
     transform: translate(-50%, -60%);
+  }
+
+  @media (min-width: 768px) {
+    font-size: 60px;
+  }
+
+  .preloadr_title-appear {
+    opacity: 0;
+  }
+
+  .preloadr_title-appear-active {
+    opacity: 1;
+
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 
