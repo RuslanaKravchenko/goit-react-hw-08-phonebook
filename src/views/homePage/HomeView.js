@@ -77,7 +77,10 @@ const HomeView = () => {
           ))}
         </ul>
 
-        <a className="call_btn " href={`tel:${state.number}`}>
+        <a
+          className="call_btn "
+          href={state.number ? `tel:${state.number}` : '#'}
+        >
           <svg width="30px" height="30px">
             <use href={sprite + '#call'} />
           </svg>
