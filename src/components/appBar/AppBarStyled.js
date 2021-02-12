@@ -44,7 +44,7 @@ const AppBarStyled = styled.header`
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:not(:last-child) {
-      margin-right: 20px;
+      margin-right: 10px;
     }
 
     &:hover {
@@ -126,7 +126,9 @@ const AppBarStyled = styled.header`
     color: inherit;
     text-decoration: none;
 
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
+    border: 1px solid #a9d5d58c;
+    box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23);
 
     border-radius: 30px;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -149,11 +151,12 @@ const AppBarStyled = styled.header`
 
   .auth_btn-activeLink {
     color: #7915c5;
+    border: 1px solid #883dc7f2;
+    box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23);
+
     & svg {
       fill: #7915c5;
     }
-    border: 1px solid #883dc7f2;
-    box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23);
   }
 `;
 export default AppBarStyled;
