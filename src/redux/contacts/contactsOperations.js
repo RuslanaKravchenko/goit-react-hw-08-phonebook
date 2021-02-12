@@ -25,7 +25,7 @@ const addNewContact = contact => async (dispatch, getState) => {
 const getContacts = () => async (dispatch, getState) => {
   const localId = getState().auth.user.localId;
   const token = getState().auth.token.idToken;
-  const isAuth = getState().auth.token.isAuth;
+  const isAuth = getState().auth.user.isAuth;
 
   dispatch(contactsActions.getContactsRequest());
 

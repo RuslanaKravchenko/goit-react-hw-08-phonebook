@@ -2,7 +2,7 @@ import styled from 'styled-components';
 const Main = styled.main`
   padding-bottom: 20px;
   .phonebook_title {
-    color: #0d5667;
+    color: ${props => props.theme.colors.accentText};
     margin-bottom: 30px;
     text-align: center;
   }

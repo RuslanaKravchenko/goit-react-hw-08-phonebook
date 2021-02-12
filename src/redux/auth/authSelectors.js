@@ -1,4 +1,4 @@
-const isAuthenticated = state => state.auth.token.isAuth;
+const isAuthenticated = state => state.auth.user.isAuth;
 const showProfile = state => state.auth.user.showProfile;
 const getUserName = state => state.auth.user.displayName;
 const getUserEmail = state => state.auth.user.email;

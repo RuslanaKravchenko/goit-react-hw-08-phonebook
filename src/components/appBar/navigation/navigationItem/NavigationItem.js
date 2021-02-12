@@ -20,7 +20,7 @@ const NavigationItem = ({
             className="link"
             activeClassName="activeLink"
           >
-            <svg className="" width="30px" height="30px">
+            <svg className="" width="36px" height="36px">
               <use href={icon} />
             </svg>
           </NavLink>
@@ -35,7 +35,7 @@ const NavigationItem = ({
             className="link"
             activeClassName="activeLink"
           >
-            <svg className="" width="30px" height="30px">
+            <svg className="" width="36px" height="36px">
               <use href={icon} />
             </svg>
           </NavLink>

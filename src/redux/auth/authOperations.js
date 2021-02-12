@@ -48,11 +48,13 @@ const refreshTokenOperation = () => async (dispatch, getState) => {
       grant_type: 'refresh_token',
       refresh_token: refreshToken,
     });
+    token.set(response.data.idToken);
     dispatch(authActions.getNewTokenSuccess(response.data));
-    console.log('Новый токен получен');
+
     dispatch(contactsOperations.getContacts());
   } catch (error) {
     dispatch(authActions.getNewTokenError(error.message));
+    dispatch(authActions.signOut());
   }
 };
 

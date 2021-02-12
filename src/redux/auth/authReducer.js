@@ -9,6 +9,7 @@ const initialUserState = {
   displayName: '',
   email: '',
   localId: '',
+  isAuth: false,
   showProfile: false,
 };
 
@@ -17,12 +18,14 @@ const userReducer = createReducer(initialUserState, {
     ...state,
     email: payload.email,
     localId: payload.localId,
+    isAuth: true,
   }),
   [authActions.signInSuccess]: (state, { payload }) => ({
     ...state,
     email: payload.email,
     localId: payload.localId,
     displayName: payload.displayName,
+    isAuth: true,
   }),
 
   [authActions.signOut]: () => initialUserState,
@@ -41,7 +44,6 @@ const userReducer = createReducer(initialUserState, {
 const initialToken = {
   idToken: '',
   refreshToken: '',
-  isAuth: false,
 };
 
 const tokenReducer = createReducer(initialToken, {
@@ -49,13 +51,11 @@ const tokenReducer = createReducer(initialToken, {
     ...state,
     idToken: payload.idToken,
     refreshToken: payload.refreshToken,
-    isAuth: true,
   }),
   [authActions.signInSuccess]: (state, { payload }) => ({
     ...state,
     idToken: payload.idToken,
     refreshToken: payload.refreshToken,
-    isAuth: true,
   }),
   [authActions.signOut]: () => initialToken,
   [authActions.getNewTokenSuccess]: (state, { payload }) => ({
@@ -91,13 +91,13 @@ const loadingReducer = createReducer(false, {
 const userPersistConfig = {
   key: 'user',
   storage,
-  whitelist: ['displayName', 'email', 'localId'],
+  whitelist: ['displayName', 'email', 'localId', 'isAuth'],
 };
 
 const tokenPersistConfig = {
   key: 'token',
   storage,
-  whitelist: ['idToken', 'refreshToken', 'isAuth'],
+  whitelist: ['idToken', 'refreshToken'],
 };
 
 export default combineReducers({
