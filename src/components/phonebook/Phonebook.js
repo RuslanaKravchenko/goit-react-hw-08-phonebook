@@ -14,8 +14,6 @@ import Spinner from '../loader/Loader';
 import sprite from '../../assets/symbol-defs.svg';
 import Main from './PhonebookStyled';
 
-
-
 const Phonebook = ({ contacts, isLoadingContacts }) => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -90,7 +88,7 @@ const Phonebook = ({ contacts, isLoadingContacts }) => {
             className="openContactForm_btn"
             onClick={openAddContsctForm}
           >
-            <svg width="25px" height="25px">
+            <svg width="34px" height="34px">
               <use href={sprite + '#person_add'} />
             </svg>
           </button>

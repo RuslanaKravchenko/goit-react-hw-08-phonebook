@@ -45,11 +45,11 @@ const ListItem = styled.li`
   }
 
   .listItem_number {
-    font-size: 12px;
+    font-size: 14px;
     color: #4b4e4f;
 
     @media (min-width: 768px) {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 

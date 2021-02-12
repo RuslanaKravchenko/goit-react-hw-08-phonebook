@@ -26,8 +26,8 @@ const Main = styled.main`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background-color: #7915c5;
     border: transparent;
