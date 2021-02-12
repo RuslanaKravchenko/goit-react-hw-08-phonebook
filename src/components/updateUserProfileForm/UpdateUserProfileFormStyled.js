@@ -83,6 +83,10 @@ const UpdateUserProfileFormStyled = styled.div`
     position: relative;
     margin: 0 auto;
     width: 80px;
+
+    & svg {
+      fill: #1e5667;
+    }
   }
 
   .updateUser-avatar_span {

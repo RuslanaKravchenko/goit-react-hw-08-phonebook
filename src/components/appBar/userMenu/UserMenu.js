@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import authActions from '../../../redux/auth/authActions';
-import sprite from '../../../assets/symbol-defs.svg';
 import authSelectors from '../../../redux/auth/authSelectors';
+
+import sprite from '../../../assets/symbol-defs.svg';
 
 const UserMenu = () => {
   const dispatch = useDispatch();

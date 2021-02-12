@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { hideModal } from '../../redux/modal/modalActions';
+import { updateUserProfileOperation } from '../../redux/auth/authOperations';
+import authSelectors from '../../redux/auth/authSelectors';
+import { showNoticeMessage } from '../../redux/notice/noticeActions';
 
 import sprite from '../../assets/symbol-defs.svg';
 import UpdateUserProfileFormStyled from './UpdateUserProfileFormStyled';
 
-import { updateUserProfileOperation } from '../../redux/auth/authOperations';
-import authSelectors from '../../redux/auth/authSelectors';
-import { showNoticeMessage } from '../../redux/notice/noticeActions';
+
 
 const initialState = {
   displayName: '',

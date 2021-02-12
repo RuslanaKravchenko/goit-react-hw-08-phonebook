@@ -1,24 +1,25 @@
 import React, { Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 
 import mainRoutes from '../../routes/mainRoutes';
 import PrivateRoute from '../routes/PrivateRoute';
 import PublicRoute from '../routes/PublicRoute';
+
 import authSelectors from '../../redux/auth/authSelectors';
 import { getShowNotice } from '../../redux/notice/noticeSelectors';
-import Spinner from '../loader/Loader';
-import DefaultPage from '../../views/defaultPage/DefaultPage';
-import Notice from '../notice/Notice';
-
-import { CSSTransition } from 'react-transition-group';
-import UserProfile from '../userProfile/UserProfile';
-import Modal from '../phonebook/modal/Modal';
+import contactsSelectors from '../../redux/contacts/contactsSelectors';
 import {
   getModalContent,
   getModalIsOpen,
 } from '../../redux/modal/modalSelectors';
-import contactsSelectors from '../../redux/contacts/contactsSelectors';
+
+import Spinner from '../loader/Loader';
+import DefaultPage from '../../views/defaultPage/DefaultPage';
+import Notice from '../notice/Notice';
+import UserProfile from '../userProfile/UserProfile';
+import Modal from '../phonebook/modal/Modal';
 import UpdateUserProfileForm from '../updateUserProfileForm/UpdateUserProfileForm';
 import EditProfileForm from '../phonebook/editProfileForm/EditProfileForm';
 import ContactInfo from '../phonebook/contactInfo/ContactInfo';

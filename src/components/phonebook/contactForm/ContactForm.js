@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 
 import contactsOperations from '../../../redux/contacts/contactsOperations';
 import { showNoticeMessage } from '../../../redux/notice/noticeActions';
+import { hideModal } from '../../../redux/modal/modalActions';
 import contactsSelectors from '../../../redux/contacts/contactsSelectors';
 
 import Form from './ContactFormStyled';
-import { hideModal } from '../../../redux/modal/modalActions';
+
 
 const initialState = {
   name: '',

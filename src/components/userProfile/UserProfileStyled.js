@@ -27,6 +27,9 @@ const UserProfileStyled = styled.div`
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+    & svg {
+      fill: #1e5667;
+    }
   }
 
   .profileUser_span {
@@ -74,9 +77,6 @@ const UserProfileStyled = styled.div`
     &:focus,
     &:hover {
       transform: scale(1.1);
-      /* border: 1px solid #883dc7f2;
-      box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23); */
-
       outline: none;
     }
   }

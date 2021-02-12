@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
+
+import authSelectors from '../../redux/auth/authSelectors';
+
 import AuthNav from './navigation/authNav/AuthNav';
 import UserMenu from './userMenu/UserMenu';
 import Navigation from './navigation/Navigation';
+
 import AppBarStyled from './AppBarStyled';
-import authSelectors from '../../redux/auth/authSelectors';
 
 const AppBar = () => {
   const isAuth = useSelector(authSelectors.isAuthenticated);
@@ -19,7 +21,5 @@ const AppBar = () => {
     </AppBarStyled>
   );
 };
-
-// AppBar.propTypes = {};
 
 export default AppBar;

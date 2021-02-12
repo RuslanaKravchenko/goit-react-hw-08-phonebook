@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import UserProfileStyled from './UserProfileStyled';
 import { showModal } from '../../redux/modal/modalActions';
-import authSelectors from '../../redux/auth/authSelectors';
-import sprite from '../../assets/symbol-defs.svg';
 import authActions from '../../redux/auth/authActions';
+import authSelectors from '../../redux/auth/authSelectors';
+
+import sprite from '../../assets/symbol-defs.svg';
+
 
 const UserProfile = () => {
   const userName = useSelector(authSelectors.getUserName);
@@ -19,12 +21,12 @@ const UserProfile = () => {
   const onHandleLogout = () => {
     dispatch(authActions.signOut());
   };
-  const avatar = userName[0].toUpperCase();
+
   return (
     <UserProfileStyled>
       <div className="profileUser_avatar-fild">
         {userName ? (
-          <span className="profileUser_span">{avatar}</span>
+          <span className="profileUser_span">{userName[0].toUpperCase()}</span>
         ) : (
           <svg width="80px" height="80px">
             <use href={sprite + '#account_circle'} />

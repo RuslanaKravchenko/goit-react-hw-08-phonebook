@@ -8,17 +8,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+
 import contactsReducer from './contacts/contactsReducer';
 import { noticeReducer } from './notice/noticeReducer';
 import { modalReducer } from './modal/modalReducer';
 import authReducer from './auth/authReducer';
-
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['user', 'token'],
-// };
 
 export const store = configureStore({
   reducer: {

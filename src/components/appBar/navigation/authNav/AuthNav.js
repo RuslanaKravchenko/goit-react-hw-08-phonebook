@@ -35,6 +35,4 @@ const AuthNav = () => {
   );
 };
 
-/* !isAuth && */
-
 export default AuthNav;

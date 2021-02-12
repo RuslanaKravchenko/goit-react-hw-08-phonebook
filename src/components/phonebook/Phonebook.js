@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 
 import ContactList from './contactList/ContactList';
 import Filter from './filter/Filter';
+import { CSSTransition } from 'react-transition-group';
 
 import contactsOperations from '../../redux/contacts/contactsOperations';
 import contactsSelectors from '../../redux/contacts/contactsSelectors';
+import { showModal } from '../../redux/modal/modalActions';
 
-import { CSSTransition } from 'react-transition-group';
+import Spinner from '../loader/Loader';
 import sprite from '../../assets/symbol-defs.svg';
 import Main from './PhonebookStyled';
-import Spinner from '../loader/Loader';
-import { showModal } from '../../redux/modal/modalActions';
+
+
 
 const Phonebook = ({ contacts, isLoadingContacts }) => {
   const dispatch = useDispatch();

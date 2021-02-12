@@ -6,11 +6,6 @@ const getLoading = state => state.phonebookContacts.loading;
 const getError = state => state.phonebookContacts.error;
 const getContactId = state => state.phonebookContacts.idValue;
 
-//  const getContactById = getContactId => {
-//    const contactById = contacts.find(contact => contact.id === idValue);
-//    return contactById;
-//  };
-
 const getContactById = createSelector(
   [getContacts, getContactId],
   (contacts, idValue) => {
