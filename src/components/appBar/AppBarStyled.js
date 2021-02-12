@@ -126,9 +126,7 @@ const AppBarStyled = styled.header`
     color: inherit;
     text-decoration: none;
 
-    /* border: 1px solid transparent; */
     border: 1px solid #a9d5d58c;
-    box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23);
 
     border-radius: 30px;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
