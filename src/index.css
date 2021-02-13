@@ -47,11 +47,6 @@ img {
   }
 }
 
-.pageTitle {
-  margin-bottom: 30px;
-  text-align: center;
-  color: #0d5667;
-}
 /* ====================animations=================== */
 .my-notice-enter {
   opacity: 0;

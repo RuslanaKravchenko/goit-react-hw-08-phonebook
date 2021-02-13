@@ -58,7 +58,7 @@ const AuthForm = () => {
           <span className="form_text">Email: </span>
 
           <input
-            className="form_input"
+            className="form_input "
             placeholder="Enter email"
             type="email"
             name="email"

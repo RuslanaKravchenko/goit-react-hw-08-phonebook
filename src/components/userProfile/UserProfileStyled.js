@@ -6,7 +6,15 @@ const UserProfileStyled = styled.div`
   padding: 20px;
   position: fixed;
   top: 60px;
-  background-color: #fff;
+  background-color: ${props =>
+    props.theme.title === 'light'
+      ? '#fff'
+      : props.theme.colors.modalBackground};
+  border: ${props =>
+    props.theme.title === 'light'
+      ? '1px solid  #e1e4e8'
+      : '1px solid   #30363d'};
+
   width: 96%;
   text-align: center;
   border-radius: 5px;
@@ -51,7 +59,7 @@ const UserProfileStyled = styled.div`
   .profileUser_email {
     margin-bottom: 15px;
     font-size: 16px;
-    color: #1e5667;
+    color: ${props => props.theme.colors.accentText};
   }
 
   .profile_btn {
@@ -62,8 +70,6 @@ const UserProfileStyled = styled.div`
     font-weight: 700;
     color: #fff;
     background-color: transparent;
-
-    /* border: 1px solid #c1c7c8; */
     border: none;
     border-radius: 30px;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);

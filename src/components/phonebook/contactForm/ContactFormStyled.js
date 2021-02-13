@@ -10,7 +10,7 @@ const Form = styled.form`
 
   .form_title {
     text-align: center;
-    color: #0d5667;
+    color: ${props => props.theme.colors.accentText};
   }
   .form_fild {
     display: flex;
@@ -25,7 +25,10 @@ const Form = styled.form`
   .form_text {
     margin-bottom: 5px;
     font-size: 18px;
-    color: #076c77;
+    color: ${props =>
+      props.theme.title === 'light'
+        ? '#076c77'
+        : props.theme.colors.primaryText};
   }
 
   .form_input {
@@ -58,7 +61,7 @@ const Form = styled.form`
     &:focus,
     &:hover {
       color: #7915c5;
-      background-color: #fff;
+      background-color: ${props => props.theme.colors.modalBackground};
       border: 2px solid #883dc7f2;
       box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23);
 

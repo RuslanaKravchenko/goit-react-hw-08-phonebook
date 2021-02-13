@@ -6,6 +6,7 @@ const NoticeWrapper = styled.div`
   top: 20px;
   right: 20px;
   background-color: #ffff78fa;
+  color: #24292e;
   width: 280px;
   min-height: 60px;
   border-radius: 5px;

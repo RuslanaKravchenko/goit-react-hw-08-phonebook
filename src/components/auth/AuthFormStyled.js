@@ -18,7 +18,10 @@ const AuthFormStyled = styled.div`
   .form_text {
     margin-bottom: 5px;
     font-size: 18px;
-    color: #076c77;
+    color: ${props =>
+      props.theme.title === 'light'
+        ? '#076c77'
+        : props.theme.colors.primaryText};
   }
 
   .form_input {
@@ -29,6 +32,7 @@ const AuthFormStyled = styled.div`
     outline: none;
     &:focus,
     &:hover {
+      background-color: ${props => props.theme.colors.inputBackground};
       border-color: #c97ddf;
       box-shadow: 5px 5px 8px -4px rgba(117, 52, 210, 0.33);
     }

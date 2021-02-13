@@ -14,7 +14,14 @@ const Overlay = styled.div`
 
   .Modal {
     position: relative;
-    background-color: #fff;
+    background-color: ${props =>
+      props.theme.title === 'light'
+        ? '#fff'
+        : props.theme.colors.modalBackground};
+    border: ${props =>
+      props.theme.title === 'light'
+        ? '1px solid  #e1e4e8'
+        : '1px solid   #30363d'};
     width: calc(100vw - 20px);
     max-height: calc(100vh - 24px);
 
@@ -38,6 +45,9 @@ const Overlay = styled.div`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    & .modal_icon {
+      fill: ${props => props.theme.colors.primaryText};
+    }
 
     &:hover,
     &:focus {

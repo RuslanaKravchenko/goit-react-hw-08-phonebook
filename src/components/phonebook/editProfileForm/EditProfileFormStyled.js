@@ -8,11 +8,6 @@ const EditProfileStyled = styled.div`
     padding: 30px 40px;
   }
 
-  .profile_title {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
   .profile_form {
     display: flex;
     flex-direction: column;
@@ -41,7 +36,7 @@ const EditProfileStyled = styled.div`
   .profile_text {
     margin-bottom: 5px;
     font-size: 18px;
-    color: #076c77;
+    color: ${props => props.theme.colors.accentText};
   }
 
   .profile_input {
@@ -61,7 +56,7 @@ const EditProfileStyled = styled.div`
   .profile_category-text,
   .profile_date-text {
     font-size: 16px;
-    color: #076c77;
+    color: ${props => props.theme.colors.accentText};
   }
 
   .profile_category-select {
@@ -71,7 +66,7 @@ const EditProfileStyled = styled.div`
     display: block;
     font-size: 16px;
     font-family: sans-serif;
-    color: #444;
+    color: #24292e;
     line-height: 1.3;
     padding: 5px 10px;
     width: 150px;
@@ -83,7 +78,7 @@ const EditProfileStyled = styled.div`
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-color: #fff;
+    background-color: transparent;
     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
       linear-gradient(to bottom, #ffffff 0%, #c7f3ec 100%);
     background-repeat: no-repeat, repeat;
@@ -97,7 +92,6 @@ const EditProfileStyled = styled.div`
     border-color: #c97ddf;
     box-shadow: 5px 5px 8px -4px rgba(117, 52, 210, 0.33);
 
-    color: #222;
     outline: none;
   }
 
@@ -105,6 +99,7 @@ const EditProfileStyled = styled.div`
     text-align: center;
     width: 220px;
     padding: 5px 10px;
+    color: #24292e;
     border: 1px solid #aaa;
     box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
@@ -136,7 +131,7 @@ const EditProfileStyled = styled.div`
     &:focus,
     &:hover {
       color: #7915c5;
-      background-color: #fff;
+      background-color: ${props => props.theme.colors.modalBackground};
       border: 2px solid #883dc7f2;
       box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23);
 
@@ -203,6 +198,10 @@ const EditProfileStyled = styled.div`
     background-color: transparent;
     border: none;
     cursor: pointer;
+
+    & .avatar_icon {
+      fill: ${props => props.theme.colors.primaryText};
+    }
 
     &:hover,
     &:focus {

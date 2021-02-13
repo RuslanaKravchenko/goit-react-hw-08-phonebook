@@ -16,7 +16,10 @@ const ContactInfoStyled = styled.div`
     padding: 3px 7px;
     width: max-content;
     font-size: 14px;
-    color: #19b785;
+    color: ${props =>
+      props.theme.title === 'light'
+        ? '#083e2d'
+        : props.theme.colors.secondaryAccent};
     border: 1px solid #19b785;
     border-radius: 15px;
   }
@@ -39,11 +42,14 @@ const ContactInfoStyled = styled.div`
     display: block;
     flex-grow: 1;
     height: 14px;
-    border-bottom: 2px dotted #eff5f4;
+    border-bottom: ${props =>
+      props.theme.title === 'light'
+        ? ' 2px dotted #eff5f4'
+        : ' 2px dotted  #2a2b2c'};
   }
   .info_label {
     font-size: 16px;
-    color: #4b4e4f;
+    color: ${props => props.theme.colors.accentText};
   }
 
   .info_contact {
@@ -58,7 +64,7 @@ const ContactInfoStyled = styled.div`
 
   .info_dateOfBirth-label {
     font-size: 16px;
-    color: #4b4e4f;
+    color: ${props => props.theme.colors.accentText};
   }
 
   .info_dateOfBirth-date {
@@ -90,7 +96,7 @@ const ContactInfoStyled = styled.div`
     &:focus,
     &:hover {
       color: #7915c5;
-      background-color: #fff;
+      background-color: ${props => props.theme.colors.modalBackground};
       border: 2px solid #883dc7f2;
       box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23);
 
