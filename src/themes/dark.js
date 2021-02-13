@@ -14,12 +14,6 @@ const dark = {
     accentText: '#58a6ff',
 
     navLink: '#8b949e',
-
-    // primary: '#111111',
-    // secondary: '#4c4c4c',
-    // text: '#ffffff',
-    // main: '#819ff5',
-    // buttonText: '#ffffff',
   },
 };
 

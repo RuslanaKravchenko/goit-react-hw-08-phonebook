@@ -8,8 +8,7 @@ import { showNoticeMessage } from '../../redux/notice/noticeActions';
 
 import sprite from '../../assets/symbol-defs.svg';
 import UpdateUserProfileFormStyled from './UpdateUserProfileFormStyled';
-
-
+import toDataURL from '../../utils/b64';
 
 const initialState = {
   displayName: '',
@@ -20,6 +19,7 @@ const initialState = {
 const UpdateUserProfileForm = () => {
   const userName = useSelector(authSelectors.getUserName);
   const userEmail = useSelector(authSelectors.getUserEmail);
+  const userAvatar = useSelector(authSelectors.getUserAvatar);
   const dispatch = useDispatch();
 
   const [user, setUser] = useState({
@@ -28,9 +28,20 @@ const UpdateUserProfileForm = () => {
     displayName: userName,
   });
 
+  const [avatar, setAvatar] = useState(userAvatar);
+
   const onHandleChange = e => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+  };
+
+  const onHandleChangeAvatar = e => {
+    toDataURL(e.target).then(data => setAvatar(data));
+  };
+
+  const onHandleClick = () => {
+    avatar && setAvatar('');
+    return;
   };
 
   const onHandleSubmit = e => {
@@ -51,22 +62,48 @@ const UpdateUserProfileForm = () => {
       return;
     }
 
-    dispatch(updateUserProfileOperation(user));
+    dispatch(updateUserProfileOperation(user, avatar));
     dispatch(hideModal());
   };
 
   return (
     <UpdateUserProfileFormStyled>
       <form className="updateUser_form" onSubmit={onHandleSubmit}>
-        <div className="updateUser-avatar_fild">
-          {userName ? (
-            <span className="updateUser-avatar_span">
-              {userName[0].toUpperCase()}
-            </span>
-          ) : (
-            <svg className="updateUser_icon" width="80px" height="80px">
-              <use href={sprite + '#account_circle'} />
-            </svg>
+        <div className="avatar_fild">
+          <label className="avatar_label">
+            <input
+              type="file"
+              name="avatar"
+              className="avatar_input"
+              onChange={onHandleChangeAvatar}
+            />
+
+            {avatar && (
+              <div className="avatar_container">
+                <img className="avatar_img" src={avatar} alt="avatar" />
+              </div>
+            )}
+
+            {!avatar && userName && (
+              <span className="avatar_span">{userName[0].toUpperCase()}</span>
+            )}
+            {!avatar && !userName && (
+              <svg width="80px" height="80px">
+                <use href={sprite + '#account_circle'} />
+              </svg>
+            )}
+          </label>
+
+          {avatar && (
+            <button
+              className="avatar_btn"
+              type="button"
+              onClick={onHandleClick}
+            >
+              <svg className="avatar_icon" width="20px" height="20px">
+                <use href={sprite + '#clear'} />
+              </svg>
+            </button>
           )}
         </div>
 

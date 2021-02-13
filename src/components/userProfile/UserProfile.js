@@ -8,10 +8,10 @@ import authSelectors from '../../redux/auth/authSelectors';
 
 import sprite from '../../assets/symbol-defs.svg';
 
-
 const UserProfile = () => {
   const userName = useSelector(authSelectors.getUserName);
   const userEmail = useSelector(authSelectors.getUserEmail);
+  const userAvatar = useSelector(authSelectors.getUserAvatar);
   const dispatch = useDispatch();
 
   const onHandleClick = () => {
@@ -25,9 +25,16 @@ const UserProfile = () => {
   return (
     <UserProfileStyled>
       <div className="profileUser_avatar-fild">
-        {userName ? (
+        {userAvatar && (
+          <div className="avatar_container">
+            <img className="avatar_img" src={userAvatar} alt="avatar" />
+          </div>
+        )}
+
+        {!userAvatar && userName && (
           <span className="profileUser_span">{userName[0].toUpperCase()}</span>
-        ) : (
+        )}
+        {!userAvatar && !userName && (
           <svg width="80px" height="80px">
             <use href={sprite + '#account_circle'} />
           </svg>

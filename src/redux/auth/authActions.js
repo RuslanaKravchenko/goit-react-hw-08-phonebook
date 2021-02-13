@@ -16,6 +16,19 @@ const updateUserRequest = createAction('auth/updateUserRequest');
 const updateUserSuccess = createAction('auth/updateUserSuccess');
 const updateUserError = createAction('auth/updateUserError');
 
+const updateUserAvatar = createAction('auth/updateUserAvatar');
+
+const getCurrentUserAvatarRequest = createAction(
+  'auth/getCurrentUserAvatarRequest',
+);
+const getCurrentUserAvatarSuccess = createAction(
+  'auth/getCurrentUserAvatarSuccess',
+);
+
+const getCurrentUserAvatarError = createAction(
+  'auth/getCurrentUserAvatarError',
+);
+
 const signOut = createAction('auth/signOut');
 
 const showProfile = createAction('auth/showProfile');
@@ -35,6 +48,10 @@ const authActions = {
   updateUserRequest,
   updateUserSuccess,
   updateUserError,
+  updateUserAvatar,
+  getCurrentUserAvatarRequest,
+  getCurrentUserAvatarSuccess,
+  getCurrentUserAvatarError,
 };
 
 export default authActions;

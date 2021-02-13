@@ -8,7 +8,7 @@ const PreloaderStyled = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #0d1117;
   pointer-events: initial;
 
   .preloadr_title {

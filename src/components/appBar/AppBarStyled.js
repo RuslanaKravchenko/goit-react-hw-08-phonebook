@@ -90,7 +90,7 @@ const AppBarStyled = styled.header`
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     & svg {
-      fill: #a9d5d5;
+      fill: ${props => props.theme.colors.navLink};
     }
 
     &:focus,
@@ -114,6 +114,14 @@ const AppBarStyled = styled.header`
     font-weight: 500;
     background-color: ${randomRGB};
     border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .avatar_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .auth_btn-link {

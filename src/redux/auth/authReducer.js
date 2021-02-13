@@ -7,6 +7,7 @@ import authActions from './authActions';
 
 const initialUserState = {
   displayName: '',
+  avatar: '',
   email: '',
   localId: '',
   isAuth: false,
@@ -26,6 +27,16 @@ const userReducer = createReducer(initialUserState, {
     localId: payload.localId,
     displayName: payload.displayName,
     isAuth: true,
+  }),
+
+  [authActions.getCurrentUserAvatarSuccess]: (state, { payload }) => ({
+    ...state,
+    avatar: payload,
+  }),
+
+  [authActions.updateUserAvatar]: (state, { payload }) => ({
+    ...state,
+    avatar: payload,
   }),
 
   [authActions.signOut]: () => initialUserState,
@@ -76,6 +87,7 @@ const errorReducer = createReducer(null, {
   [authActions.signOut]: () => null,
   [authActions.getNewTokenError]: (_, { payload }) => payload,
   [authActions.updateUserError]: (_, { payload }) => payload,
+  [authActions.getCurrentUserAvatarError]: (_, { payload }) => payload,
 });
 
 const loadingReducer = createReducer(false, {

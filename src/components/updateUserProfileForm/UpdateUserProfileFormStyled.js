@@ -79,17 +79,30 @@ const UpdateUserProfileFormStyled = styled.div`
     }
   }
 
-  .updateUser-avatar_fild {
+  .avatar_fild {
     position: relative;
     margin: 0 auto;
     width: 80px;
 
     & svg {
-      fill: #1e5667;
+      fill: ${props => props.theme.colors.navLink};
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 
-  .updateUser-avatar_span {
+  .avatar_label {
+    display: block;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .avatar_input {
+    display: none;
+  }
+
+  .avatar_span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,8 +114,48 @@ const UpdateUserProfileFormStyled = styled.div`
     border-radius: 50%;
   }
 
-  .updateUser_icon {
+  .avatar_container {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .avatar_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .avatar_icon {
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .avatar_btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    & .avatar_icon {
+      fill: ${props => props.theme.colors.primaryText};
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+
+      & .avatar_icon {
+        fill: #7c41c5;
+      }
+    }
   }
 `;
 export default UpdateUserProfileFormStyled;

@@ -34,10 +34,30 @@ const UserProfileStyled = styled.div`
   .profileUser_avatar-fild {
     display: flex;
     justify-content: center;
+
     margin-bottom: 10px;
     & svg {
-      fill: #1e5667;
+      fill: ${props => props.theme.colors.navLink};
     }
+  }
+
+  .avatar_container {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .avatar_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .profileUser_span {

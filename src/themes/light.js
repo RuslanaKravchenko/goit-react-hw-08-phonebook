@@ -6,6 +6,7 @@ const light = {
     secondaryBackground: '#122438',
     inputBackground: '#ffffff',
     accentBackground: '#ffffff',
+    modalBackground: '#ffffff',
 
     secondaryAccent: '#0b858b',
 
@@ -13,13 +14,6 @@ const light = {
     accentText: '#0d5667',
 
     navLink: '#a9d5d5',
-
-    // secondaryText: '',
-    // primary: '#ffffff',
-    // secondary: '#dbd7d8',
-    // text: '#5a5a5a',
-    // main: '#819ff5',
-    // buttonText: '#dbd7d8',
   },
 };
 

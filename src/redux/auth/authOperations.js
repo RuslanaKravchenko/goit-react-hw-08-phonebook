@@ -18,6 +18,11 @@ const signUpOperation = user => async dispatch => {
       ...user,
       returnSecureToken: true,
     });
+    // eslint-disable-next-line
+    const urerAvatar = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/users/${response.data.localId}.json?auth=${response.data.idToken}`,
+      { avatar: '' },
+    );
     token.set(response.data.idToken);
     dispatch(authActions.signUpSuccess({ ...response.data, name: user.name }));
   } catch (error) {
@@ -32,9 +37,19 @@ const signInOperation = user => async dispatch => {
       ...user,
       returnSecureToken: true,
     });
+
+    const userResponseAvatar = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/users/${response.data.localId}.json?auth=${response.data.idToken}`,
+    );
+
+    userResponseAvatar.data.avatar &&
+      dispatch(
+        authActions.getCurrentUserAvatarSuccess(userResponseAvatar.data.avatar),
+      );
+
     token.set(response.data.idToken);
 
-    dispatch(authActions.signInSuccess(response.data));
+    dispatch(authActions.signInSuccess({ ...response.data }));
   } catch (error) {
     dispatch(authActions.signInError(error.message));
   }
@@ -58,9 +73,12 @@ const refreshTokenOperation = () => async (dispatch, getState) => {
   }
 };
 
-const updateUserProfileOperation = user => async (dispatch, getState) => {
+const updateUserProfileOperation = (user, avatar) => async (
+  dispatch,
+  getState,
+) => {
   const idToken = getState().auth.token.idToken;
-  const isAuth = getState().auth.token.isAuth;
+  const localId = getState().auth.user.localId;
   dispatch(authActions.updateUserRequest());
   try {
     const response = await axios.post(
@@ -71,12 +89,33 @@ const updateUserProfileOperation = user => async (dispatch, getState) => {
         returnSecureToken: true,
       },
     );
-
     dispatch(authActions.updateUserSuccess(response.data));
+
+    const responseAvatar = await axios.put(
+      `/users/${localId}.json?auth=${idToken}`,
+      { avatar: avatar },
+    );
+    dispatch(authActions.updateUserAvatar(responseAvatar.data.avatar));
   } catch (error) {
-    if (isAuth && error.message === 'Request failed with status code 400') {
-      dispatch(authActions.signOut());
-    } else dispatch(authActions.updateUserError(error.message));
+    dispatch(authActions.signOut());
+  }
+};
+
+const getCurrentUserAvatar = () => async (dispatch, getState) => {
+  const idToken = getState().auth.token.idToken;
+  const localId = getState().auth.user.localId;
+  dispatch(authActions.getCurrentUserAvatarRequest());
+  try {
+    const userResponseAvatar = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/users/${localId}.json?auth=${idToken}`,
+    );
+
+    userResponseAvatar.data.avatar &&
+      dispatch(
+        authActions.getCurrentUserAvatarSuccess(userResponseAvatar.data.avatar),
+      );
+  } catch (error) {
+    dispatch(authActions.getCurrentUserAvatarError(error.message));
   }
 };
 
@@ -85,4 +124,5 @@ export {
   signInOperation,
   refreshTokenOperation,
   updateUserProfileOperation,
+  getCurrentUserAvatar,
 };
