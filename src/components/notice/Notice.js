@@ -9,11 +9,14 @@ import NoticeWrapper from './NoticeStyled';
 
 const Notice = ({ message, hideNoticeMessage }) => {
   useEffect(() => {
-    setTimeout(() => {
+    const idTimeout = setTimeout(() => {
       hideNoticeMessage();
     }, 3000);
-    // eslint-disable-next-line
-  }, []);
+
+    return () => {
+      clearTimeout(idTimeout);
+    };
+  }, [hideNoticeMessage]);
 
   return (
     <NoticeWrapper>

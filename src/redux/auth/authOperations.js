@@ -18,8 +18,7 @@ const signUpOperation = user => async dispatch => {
       ...user,
       returnSecureToken: true,
     });
-    // eslint-disable-next-line
-    const urerAvatar = await axios.post(
+    await axios.post(
       `${process.env.REACT_APP_BASE_URL}/users/${response.data.localId}.json?auth=${response.data.idToken}`,
       { avatar: '' },
     );
