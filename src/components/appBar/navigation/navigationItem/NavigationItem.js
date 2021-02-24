@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 const NavigationItem = ({
   isAuth,
   path,
-  name,
   exact,
   isPrivate,
   restricted,
@@ -20,7 +19,7 @@ const NavigationItem = ({
             className="link"
             activeClassName="activeLink"
           >
-            <svg className="" width="36px" height="36px">
+            <svg width="36px" height="36px">
               <use href={icon} />
             </svg>
           </NavLink>

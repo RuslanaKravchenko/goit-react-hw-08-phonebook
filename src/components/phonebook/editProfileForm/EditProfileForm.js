@@ -65,6 +65,12 @@ const EditProfileForm = ({ contactById, editContact, hideModal }) => {
                 {contact.name[0].toUpperCase()}
               </span>
             )}
+
+            <span className="avatar_avatar_icon-wpapper">
+              <svg width="14px" height="14px">
+                <use href={sprite + '#edit'} />
+              </svg>
+            </span>
           </label>
 
           {contact.avatar && (

@@ -92,6 +92,11 @@ const UpdateUserProfileForm = () => {
                 <use href={sprite + '#account_circle'} />
               </svg>
             )}
+            <span className="avatar_avatar_icon-wpapper">
+              <svg width="14px" height="14px">
+                <use href={sprite + '#edit'} />
+              </svg>
+            </span>
           </label>
 
           {avatar && (

@@ -131,6 +131,20 @@ const UpdateUserProfileFormStyled = styled.div`
   .avatar_icon {
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  .avatar_avatar_icon-wpapper {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 20%);
+  }
+
   .avatar_btn {
     position: absolute;
     top: -10px;
